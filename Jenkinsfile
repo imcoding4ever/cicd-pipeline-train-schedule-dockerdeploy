@@ -13,13 +13,15 @@ pipeline {
                 branch 'master'
             }
             steps {
-                echo 'Build Docker Image'
+                echo 'Build Docker Image 1'
                 script {
                     app = docker.build("arun03nie/train-schedule-dkp")
                     app.inside {
                         sh 'echo $(curl localhost:8080)'
                     }
+                
                 }
+                echo 'Build Docker Image 2'
             }
         }
         stage('Push Docker Image') {
@@ -27,13 +29,14 @@ pipeline {
                 branch 'master'
             }
             steps {
-                echo 'push Docker Image'
+                echo 'push Docker Image 1'
                 script {
                     docker.withRegistry('https://registry.hub.docker.com', 'docker_hub') {
                         app.push("${env.BUILD_NUMBER}")
                         app.push("latest")
                     }
                 }
+                echo 'push Docker Image 2'
             }
         }
         stage('DeployToProduction') {
