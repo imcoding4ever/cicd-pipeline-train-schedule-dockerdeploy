@@ -13,6 +13,7 @@ pipeline {
                 branch 'master'
             }
             steps {
+                echo 'Build Docker Image'
                 script {
                     app = docker.build("arun03nie/train-schedule-dkp")
                     app.inside {
@@ -26,6 +27,7 @@ pipeline {
                 branch 'master'
             }
             steps {
+                echo 'push Docker Image'
                 script {
                     docker.withRegistry('https://registry.hub.docker.com', 'docker_hub') {
                         app.push("${env.BUILD_NUMBER}")
