@@ -21,7 +21,7 @@ pipeline {
                     }
                 
                 }
-                echo 'Build Docker Image 2'
+                echo 'Build Docker Image 2-1'
             }
         }
         stage('Push Docker Image') {
