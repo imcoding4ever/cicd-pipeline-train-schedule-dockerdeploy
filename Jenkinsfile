@@ -13,7 +13,7 @@ pipeline {
                 branch 'master'
             }
             steps {
-                echo 'Build Docker Image 1'
+                echo 'Build Docker Image 1-1'
                 script {
                     app = docker.build("arun03nie/train-schedule-dkp")
                     app.inside {
